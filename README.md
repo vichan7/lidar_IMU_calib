@@ -1,4 +1,4 @@
-# LI-Calib
+# LI-Calib (Slightly Modified Version of APRIL Lab's lidar_IMU_calib)
 
 ## Overview
 
