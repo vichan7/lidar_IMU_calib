@@ -1,6 +1,7 @@
-# LI-Calib (Slightly Modified Version of APRIL Lab's lidar_IMU_calib)
+# LI-Calib 
 
 ## Overview
+This is a slightly Modified Version of APRIL Lab's [lidar_IMU_calib](https://github.com/APRIL-ZJU/lidar_IMU_calib).
 
 **LI-Calib** is a toolkit for calibrating the 6DoF rigid transformation and the time offset between a 3D LiDAR and an IMU. It's based on continuous-time batch optimization. IMU-based cost and LiDAR point-to-surfel distance are minimized jointly, which renders the calibration problem well-constrained in general scenarios. 
 
