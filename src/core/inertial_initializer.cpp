@@ -72,7 +72,7 @@ bool InertialInitializer::EstimateRotation(
   Eigen::Vector4d cov = svd.singularValues();
 
   // JAY PLEASE LOOK AT THIS COV PROBLEM 
-  if (cov(2) > 0.25) {
+  if (cov(2) > 0.25) { // gui will launch if you change this to if (true)
     q_ItoS_est_ = q_ItoS_est;
     rotaion_initialized_ = true;
     return true;

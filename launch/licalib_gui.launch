@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="topic_imu"           default="/imu1/raw/data_withSync" />
+    <arg name="topic_imu"           default="/cmu_rc2/imu/data/" />
     <arg name="path_bag"            default="/home/developer/lidar_jay_ws/ros_ws/li_calib_data/point_clouds_imu.bag"/> <!--dv changed-->
     <arg name="bag_start"           default="1" />
     <arg name="bag_durr"            default="30" />
