@@ -6,49 +6,10 @@ This is a slightly modified version of APRIL Lab's [lidar_IMU_calib](https://git
 **LI-Calib** is a toolkit for calibrating the 6DoF rigid transformation and the time offset between a 3D LiDAR and an IMU. It's based on continuous-time batch optimization. IMU-based cost and LiDAR point-to-surfel distance are minimized jointly, which renders the calibration problem well-constrained in general scenarios. 
 
 ## **Notes for Jay**
-This package requires the covariance of the data to be greater than 0.25 (see inertial_initializer.cpp). Ignore the installation instructions in this README and use our [lidar-imu-calib-docker](https://github.com/vichan7/lidar-imu-calib-docker) repository. 
-
-## **Prerequisites**
-
-- [ROS](http://wiki.ros.org/ROS/Installation) (tested with Kinetic and Melodic)
-
-  ```shell
-  sudo apt-get install ros-melodic-pcl-ros ros-melodic-velodyne-msgs
-  ```
-
-- [Ceres](http://ceres-solver.org/installation.html) (tested with version 1.14.0)
-
-- [Kontiki](https://github.com/APRIL-ZJU/Kontiki) (Continuous-Time Toolkit)
-- Pangolin (for visualization and user interface)
-- [ndt_omp](https://github.com/APRIL-ZJU/ndt_omp) 
-
-Note that **Kontiki** and **Pangolin** are included in the *thirdparty* folder.
+This package requires the covariance of the data to be greater than 0.25 (see inertial_initializer.cpp).
 
 ## Install
-
-Clone the source code for the project and build it.
-
-```shell
-# init ROS workspace
-mkdir -p ~/catkin_li_calib/src
-cd ~/catkin_li_calib/src
-catkin_init_workspace
-
-# Clone the source code for the project and build it. 
-git clone https://github.com/APRIL-ZJU/lidar_IMU_calib
-
-# ndt_omp
-wstool init
-wstool merge lidar_IMU_calib/depend_pack.rosinstall
-wstool update
-# Pangolin
-cd lidar_imu_calib_beta
-./build_submodules.sh
-## build
-cd ../..
-catkin_make
-source ./devel/setup.bash
-```
+See [lidar-imu-calib-docker](https://github.com/vichan7/lidar-imu-calib-docker). 
 
 ## Examples
 
