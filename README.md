@@ -6,7 +6,7 @@ This is a slightly modified version of APRIL Lab's [lidar_IMU_calib](https://git
 **LI-Calib** is a toolkit for calibrating the 6DoF rigid transformation and the time offset between a 3D LiDAR and an IMU. It's based on continuous-time batch optimization. IMU-based cost and LiDAR point-to-surfel distance are minimized jointly, which renders the calibration problem well-constrained in general scenarios. 
 
 ## **Notes for Jay**
-This package requires the covariance of the data to be greater than 0.25 (see inertial_initializer.cpp). 
+This package requires the covariance of the data to be greater than 0.25 (see inertial_initializer.cpp). Ignore the installation instructions in this README and use our [lidar-imu-calib-docker](https://github.com/vichan7/lidar-imu-calib-docker) repository. 
 
 ## **Prerequisites**
 
