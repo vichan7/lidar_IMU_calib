@@ -8,7 +8,7 @@ This is a slightly modified version of APRIL Lab's [lidar_IMU_calib](https://git
 ## **Notes for Jay**
 This package requires the covariance of the data to be greater than 0.25 (see inertial_initializer.cpp).
 
-## Install
+## Installation
 See [lidar-imu-calib-docker](https://github.com/vichan7/lidar-imu-calib-docker). 
 
 ## Examples
