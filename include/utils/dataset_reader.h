@@ -190,6 +190,7 @@ public:
         imu_data_.erase(imu_data_.begin());
 
     } else {
+      start_time_ = imu_data_.front().timestamp;
       while ((*std::next(scan_timestamps_.begin())) < start_time_) {
         scan_data_.erase(scan_data_.begin());
         scan_timestamps_.erase(scan_timestamps_.begin());

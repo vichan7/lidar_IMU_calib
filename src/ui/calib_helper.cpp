@@ -68,14 +68,25 @@ CalibrHelper::CalibrHelper(ros::NodeHandle& nh)
     /// read dataset
     std::cout << "\nLoad dataset from " << bag_path_ << std::endl;
     IO::LioDataset lio_dataset_temp(lidar_model_type);
+
+  std::cout << "Hello3!!!" << std::endl;
     lio_dataset_temp.read(bag_path_, topic_imu_, topic_lidar, bag_start, bag_durr);
+
+  std::cout << "Hello4!!!" << std::endl;
     dataset_reader_ = lio_dataset_temp.get_data();
+
+  std::cout << "Hello5!!!" << std::endl;
     dataset_reader_->adjustDataset();
+
+  std::cout << "Hello6!!!" << std::endl;
   }
 
+  std::cout << "Hello2!!!" << std::endl;
   map_time_ = dataset_reader_->get_start_time();
   scan4map_time_ = map_time_ + scan4map;
   double end_time = dataset_reader_->get_end_time();
+
+  std::cout << "Hello!!!" << std::endl;
 
   traj_manager_ = std::make_shared<TrajectoryManager>(
           map_time_, end_time, knot_distance, time_offset_padding);
@@ -102,39 +113,59 @@ bool CalibrHelper::createCacheFolder(const std::string& bag_path) {
 }
 
 void CalibrHelper::Initialization() {
+  std::cout << "116" << std::endl;
   if (Start != calib_step_) {
     ROS_WARN("[Initialization] Need status: Start.");
+    std::cout << "119" << std::endl;
     return;
   }
   for (const auto& imu_data: dataset_reader_->get_imu_data()) {
+    std::cout << "123" << std::endl;
     traj_manager_->feedIMUData(imu_data);
   }
   traj_manager_->initialSO3TrajWithGyro();
+  std::cout << "127" << std::endl;
 
   for(const TPointCloud& raw_scan: dataset_reader_->get_scan_data()) {
+    std::cout << "130" << std::endl;
     VPointCloud::Ptr cloud(new VPointCloud);
     TPointCloud2VPointCloud(raw_scan.makeShared(), cloud);
     double scan_timestamp = pcl_conversions::fromPCL(raw_scan.header.stamp).toSec();
+    std::cout << "134" << std::endl;
 
     lidar_odom_->feedScan(scan_timestamp, cloud);
+    std::cout << "137" << std::endl;
 
     if (lidar_odom_->get_odom_data().size() < 30
-        || (lidar_odom_->get_odom_data().size() % 10 != 0))
+        || (lidar_odom_->get_odom_data().size() % 10 != 0)) {
+      std::cout << "141" << std::endl;
       continue;
+    }
+     
+    std::cout << "145" << std::endl;
     if (rotation_initializer_->EstimateRotation(traj_manager_,
                                                 lidar_odom_->get_odom_data())) {
+      std::cout << "148" << std::endl;
       Eigen::Quaterniond qItoLidar = rotation_initializer_->getQ_ItoS();
       traj_manager_->getCalibParamManager()->set_q_LtoI(qItoLidar.conjugate());
+
+      std::cout << "152" << std::endl;
 
       Eigen::Vector3d euler_ItoL = qItoLidar.toRotationMatrix().eulerAngles(0,1,2);
       std::cout << "[Initialization] Done. Euler_ItoL initial degree: "
                 << (euler_ItoL*180.0/M_PI).transpose() << std::endl;
       calib_step_ = InitializationDone;
+      std::cout << "158: " << calib_step_ << std::endl;
       break;
     }
   }
-  if (calib_step_ != InitializationDone)
+  std::cout << "161: " << calib_step_ << std::endl;
+  std::cout << (calib_step_ != InitializationDone) << std::endl;
+  std::cout << InitializationDone << std::endl;
+  if (calib_step_ != InitializationDone){
+    std::cout << "163" << std::endl;
     ROS_WARN("[Initialization] fails.");
+  }
 }
 
 void CalibrHelper::DataAssociation() {

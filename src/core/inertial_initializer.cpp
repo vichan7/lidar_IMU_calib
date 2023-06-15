@@ -71,6 +71,7 @@ bool InertialInitializer::EstimateRotation(
   Eigen::Quaterniond q_ItoS_est(x);
   Eigen::Vector4d cov = svd.singularValues();
 
+  // JAY PLEASE LOOK AT THIS COV PROBLEM 
   if (cov(2) > 0.25) {
     q_ItoS_est_ = q_ItoS_est;
     rotaion_initialized_ = true;

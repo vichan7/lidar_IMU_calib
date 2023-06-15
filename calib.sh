@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-bag_path="/home/ha/rosbag/li_calib_data"
+bag_path="/home/developer/lidar_jay_ws/ros_ws//li_calib_data" #dv changed
 
 outdoor_sync_bag_name=(
 #"Court-01.bag"
@@ -11,7 +11,8 @@ outdoor_sync_bag_name=(
 )
 
 indoor_sync_bag_name=(
-"Garage-01.bag"
+"point_clouds_imu.bag" #dv changed
+# "Garage-01.bag"
 #"Garage-02.bag"
 #"Garage-03.bag"
 #"Garage-04.bag"
@@ -19,7 +20,7 @@ indoor_sync_bag_name=(
 )
 
 imu_topic_name=(
-"/imu1/data_sync"
+"/cmu_rc2/imu/data" #dv changed
 #"/imu2/data_sync"
 #"/imu3/data_sync"
 )
